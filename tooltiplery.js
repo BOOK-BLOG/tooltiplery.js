@@ -69,7 +69,7 @@ var tooltiplery = {
          * tooltiplery.controller.tooltipController({
          *     type: "hover", // A string, the way you call the tooltip out.
          *     element: document.getElementById("myButton"), // HTML elemant, the tooltip will popup when you hover on or click this element.
-         *     tooltip: tooltiplery.element.tooltip({...})
+         *     tooltip: tooltiplery.element.tooltip({...}), // tooltiplery tooltip or your own HTML element.
          * })
          * ```
          * Initialize a tooltiplery tooltip and bind the event to the tooltip and your button (or any other HTML element).
@@ -78,7 +78,6 @@ var tooltiplery = {
          * @param {HTMLElement} parameters.tooltip the tooltip to show.
          * @returns {undefined} no returns.
          */
-        // TODO: Finish the JS Doc
         tooltipController: function (parameters) {
             switch (parameters.type) {
                 case "hover":
@@ -142,8 +141,9 @@ var tooltiplery = {
         imageCapView: function (parameters) {
             var temp = document.createElement("div");
             temp.style.width = "100%";
-            temp.appendChild(parameters.header);
-            temp.appendChild(parameters.content);
+            if (parameters.header) { temp.appendChild(parameters.header) };
+            if (parameters.content) { temp.appendChild(parameters.content) };
+            if (parameters.footer) { temp.appendChild(parameters.footer) };
             return temp;
         },
         /**
@@ -257,6 +257,23 @@ var tooltiplery = {
         paragraph: function (parameters) {
             var temp = document.createElement("p");
             temp.innerHTML = parameters.text;
+            return temp;
+        },
+        /**
+         * ```javascript
+         * tooltiplery.element.markdownBlock({
+         *     markdown: "# *Lorem* `ipsum`\n======", // A string, the markdown source text.
+         *     padding: "16px", // A string, CSS padding property.
+         * })
+         * ```
+         * @param {String} parameters.markdown the markdown source text for the markdown block.
+         * @param {String} parameters.padding tooltiplery paragraphBlock element's padding property.
+         * @returns {HTMLDivElement} HTML **div** element.
+         */
+        markdownBlock: function (parameters) {
+            var temp = document.createElement("div");
+            temp.innerHTML = marked(parameters.markdown);
+            if (parameters.padding) { temp.style.padding = parameters.padding } else { temp.style.padding = "0 16px" };
             return temp;
         }
     },
