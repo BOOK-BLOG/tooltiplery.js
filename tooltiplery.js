@@ -117,13 +117,13 @@ var tooltiplery = {
          */
         tooltip: function (parameters) {
             var temp = document.createElement("div");
-            temp.style.width = "350px";
-            temp.style.height = "500px";
-            temp.appendChild(parameters.child);
-            temp.classList.add("tooltiplery");
+            if (parameters.width) { temp.style.width = parameters.width; } else { temp.style.width = "350px"; }
+            if (parameters.height) { temp.style.height = parameters.height; } else { temp.style.height = "500px"; }
             if (parameters.position) { temp.style.position = parameters.position };
             if (parameters.top) { temp.style.top = parameters.top };
             if (parameters.left) { temp.style.left = parameters.left };
+            temp.appendChild(parameters.child);
+            temp.classList.add("tooltiplery");
             return temp;
         },
         /**
