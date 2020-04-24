@@ -13,10 +13,10 @@ var tooltiplery = {
          * })
          * ```
          * Popup a tooltiplery tooltip.
-         * @param {HTMLDivElement} parameters.tooltip a **HTML div element** created by `tooltiplery.element.tooltip` or **your own HTML element**.
+         * @param {HTMLDivElement} params.tooltip a **HTML div element** created by `tooltiplery.element.tooltip` or **your own HTML element**.
          * @returns {String} tooltiplery tooltip **element id**.
          */
-        showTooltip: function (parameters) {
+        showTooltip: function (params) {
             var bodyTemp = document.getElementsByTagName("body")[0];
             var temp = document.getElementsByClassName("tooltiplery");
             var idTemp = 0;
@@ -26,8 +26,8 @@ var tooltiplery = {
                 }
             };
             idTemp++;
-            parameters.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
-            bodyTemp.appendChild(parameters.tooltip);
+            params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
+            bodyTemp.appendChild(params.tooltip);
             return ("tooltiplery" + String(idTemp));
         },
         /**
@@ -41,19 +41,19 @@ var tooltiplery = {
          * })
          * ```
          * Delete a tooltiplery tooltip.
-         * @param {String} parameters.type the parameters's type.
-         * @param {String} parameters.id if type is "id", give the tooltip's id.
-         * @param {HTMLElement} parameters.element if type is "HTMLElement", give the HTML element.
+         * @param {String} params.type the parameters's type.
+         * @param {String} params.id if type is "id", give the tooltip's id.
+         * @param {HTMLElement} params.element if type is "HTMLElement", give the HTML element.
          * @returns {undefined} no returns.
          */
-        hideTooltip: function (parameters) {
-            switch (parameters.type) {
+        hideTooltip: function (params) {
+            switch (params.type) {
                 case "id":
-                    var temp = document.getElementById(parameters.id);
+                    var temp = document.getElementById(params.id);
                     temp.parentNode.removeChild(temp);
                     break;
                 case "HTMLElement":
-                    parameters.element.parentNode.removeChild(parameters.element);
+                    params.element.parentNode.removeChild(params.element);
                     break;
                 default:
                     break;
@@ -73,21 +73,21 @@ var tooltiplery = {
          * })
          * ```
          * Initialize a tooltiplery tooltip and bind the event to the tooltip and your button (or any other HTML element).
-         * @param {String} parameters.type the way you call the tooltip out.
-         * @param {HTMLElement} parameters.element bind the event to this element.
-         * @param {HTMLElement} parameters.tooltip the tooltip to show.
+         * @param {String} params.type the way you call the tooltip out.
+         * @param {HTMLElement} params.element bind the event to this element.
+         * @param {HTMLElement} params.tooltip the tooltip to show.
          * @returns {undefined} no returns.
          */
-        tooltipController: function (parameters) {
-            switch (parameters.type) {
+        tooltipController: function (params) {
+            switch (params.type) {
                 case "hover":
-                    parameters.element.onmouseover = function () {
+                    params.element.onmouseover = function () {
                         tooltiplery.action.showTooltip({
-                            tooltip: parameters.tooltip,
+                            tooltip: params.tooltip,
                         });
                     };
-                    parameters.element.onmouseleave = function () {
-                        parameters.tooltip.onmouseleave = function () { parameters.tooltip.parentNode.removeChild(parameters.tooltip) }
+                    params.element.onmouseleave = function () {
+                        params.tooltip.onmouseleave = function () { params.tooltip.parentNode.removeChild(params.tooltip) }
                     };
                     break;
                 default:
@@ -109,20 +109,20 @@ var tooltiplery = {
          * })
          * ```
          * tooltiplery **tooltip** builder.
-         * @param {HTMLElement} parameters.child __child element__ of tooltiplery tooltip.
-         * @param {String} parameters.position tooltip element's position property.
-         * @param {String} parameters.left tooltip element's left property.
-         * @param {String} parameters.top tooltip element's top property.
+         * @param {HTMLElement} params.child __child element__ of tooltiplery tooltip.
+         * @param {String} params.position tooltip element's position property.
+         * @param {String} params.left tooltip element's left property.
+         * @param {String} params.top tooltip element's top property.
          * @returns {HTMLDivElement} tooltiplery **tooltip element**.
          */
-        tooltip: function (parameters) {
+        tooltip: function (params) {
             var temp = document.createElement("div");
-            if (parameters.width) { temp.style.width = parameters.width; } else { temp.style.width = "350px"; }
-            if (parameters.height) { temp.style.height = parameters.height; } else { temp.style.height = "500px"; }
-            if (parameters.position) { temp.style.position = parameters.position };
-            if (parameters.top) { temp.style.top = parameters.top };
-            if (parameters.left) { temp.style.left = parameters.left };
-            temp.appendChild(parameters.child);
+            if (params.width) { temp.style.width = params.width; } else { temp.style.width = "350px"; }
+            if (params.height) { temp.style.height = params.height; } else { temp.style.height = "500px"; }
+            if (params.position) { temp.style.position = params.position };
+            if (params.top) { temp.style.top = params.top };
+            if (params.left) { temp.style.left = params.left };
+            temp.appendChild(params.child);
             temp.classList.add("tooltiplery");
             return temp;
         },
@@ -134,16 +134,16 @@ var tooltiplery = {
          * })
          * ```
          * tooltiplery **imageCapView** builder.
-         * @param {HTMLElement} parameters.header image cap element.
-         * @param {HTMLElement} parameters.content content element.
+         * @param {HTMLElement} params.header image cap element.
+         * @param {HTMLElement} params.content content element.
          * @returns {HTMLDivElement} tooltiplery **imageCapView** element.
          */
-        imageCapView: function (parameters) {
+        imageCapView: function (params) {
             var temp = document.createElement("div");
             temp.style.width = "100%";
-            if (parameters.header) { temp.appendChild(parameters.header) };
-            if (parameters.content) { temp.appendChild(parameters.content) };
-            if (parameters.footer) { temp.appendChild(parameters.footer) };
+            if (params.header) { temp.appendChild(params.header) };
+            if (params.content) { temp.appendChild(params.content) };
+            if (params.footer) { temp.appendChild(params.footer) };
             return temp;
         },
         /**
@@ -157,20 +157,20 @@ var tooltiplery = {
          * })
          * ```
          * HTML **img** element builder
-         * @param {String} parameters.url image URL.
-         * @param {String} parameters.fit img elements's object-fit property.
-         * @param {String} parameters.width img elements's width property.
-         * @param {String} parameters.height img elements's height property.
-         * @param {String} parameters.borderRadius img elements's border-radius property.
+         * @param {String} params.url image URL.
+         * @param {String} params.fit img elements's object-fit property.
+         * @param {String} params.width img elements's width property.
+         * @param {String} params.height img elements's height property.
+         * @param {String} params.borderRadius img elements's border-radius property.
          * @returns {HTMLImageElement} HTML **img** element
          */
-        img: function (parameters) {
+        img: function (params) {
             var temp = document.createElement("img");
-            temp.setAttribute("src", parameters.url);
-            if (parameters.fit) { temp.style.objectFit = parameters.fit };
-            if (parameters.width) { temp.style.width = parameters.width } else { temp.style.width = "100%" };
-            if (parameters.height) { temp.style.height = parameters.height };
-            if (parameters.borderRadius) { temp.style.borderRadius = parameters.borderRadius };
+            temp.setAttribute("src", params.url);
+            if (params.fit) { temp.style.objectFit = params.fit };
+            if (params.width) { temp.style.width = params.width } else { temp.style.width = "100%" };
+            if (params.height) { temp.style.height = params.height };
+            if (params.borderRadius) { temp.style.borderRadius = params.borderRadius };
             return temp;
         },
         /**
@@ -191,16 +191,16 @@ var tooltiplery = {
          * })
          * ```
          * tooltiplery **paragraphBlock** builder
-         * @param {Array} parameters.children __children elements__ of tooltiplery paragraphBlock element.
-         * @param {String} parameters.padding tooltiplery paragraphBlock element's padding property.
+         * @param {Array} params.children __children elements__ of tooltiplery paragraphBlock element.
+         * @param {String} params.padding tooltiplery paragraphBlock element's padding property.
          * @returns {HTMLDivElement} tooltiplery **paragraphBlock** element
          */
-        paragraphBlock: function (parameters) {
+        paragraphBlock: function (params) {
             var temp = document.createElement("div");
-            for (var i = 0; i < parameters.children.length; i++) {
-                temp.appendChild(parameters.children[i]);
+            for (var i = 0; i < params.children.length; i++) {
+                temp.appendChild(params.children[i]);
             }
-            if (parameters.padding) { temp.style.padding = parameters.padding } else { temp.style.padding = "0 16px" };
+            if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
             return temp;
         },
         /**
@@ -209,39 +209,39 @@ var tooltiplery = {
          *     text: "Lorem ipsum", // A string, the heading text.
          * })
          * ```
-         * @param {String} parameters.text the inner text in the heading element.
+         * @param {String} params.text the inner text in the heading element.
          * @returns {HTMLHeadingElement} HTML **heading** element.
          */
         textHeader: [
             undefined,
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h1");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h2");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h3");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h4");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h5");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
-            function (parameters) {
+            function (params) {
                 var temp = document.createElement("h6");
-                temp.innerHTML = parameters.text;
+                temp.innerHTML = params.text;
                 return temp;
             },
         ],
@@ -251,12 +251,12 @@ var tooltiplery = {
          *     text: "Lorem ipsum", // A string, the paragraph text.
          * })
          * ```
-         * @param {String} parameters.text the inner text in the paragraph element.
+         * @param {String} params.text the inner text in the paragraph element.
          * @returns {HTMLParagraphElement} HTML **paragraph** element.
          */
-        paragraph: function (parameters) {
+        paragraph: function (params) {
             var temp = document.createElement("p");
-            temp.innerHTML = parameters.text;
+            temp.innerHTML = params.text;
             return temp;
         },
         /**
@@ -266,14 +266,14 @@ var tooltiplery = {
          *     padding: "16px", // A string, CSS padding property.
          * })
          * ```
-         * @param {String} parameters.markdown the markdown source text for the markdown block.
-         * @param {String} parameters.padding tooltiplery paragraphBlock element's padding property.
+         * @param {String} params.markdown the markdown source text for the markdown block.
+         * @param {String} params.padding tooltiplery paragraphBlock element's padding property.
          * @returns {HTMLDivElement} HTML **div** element.
          */
-        markdownBlock: function (parameters) {
+        markdownBlock: function (params) {
             var temp = document.createElement("div");
-            temp.innerHTML = marked(parameters.markdown);
-            if (parameters.padding) { temp.style.padding = parameters.padding } else { temp.style.padding = "0 16px" };
+            temp.innerHTML = marked(params.markdown);
+            if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
             return temp;
         }
     },
