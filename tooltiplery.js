@@ -3,6 +3,17 @@
  */
 var tooltiplery = {
     /**
+     * ```javascript
+     * tooltiplery.init(); // We will append an HTML style element to HTML body element.
+     * ```
+     * Initialize tooltiplery.js
+     */
+    init: function () {
+        var temp = document.createElement("style");
+        temp.innerHTML = ".tooltiplery{border-radius:8px;overflow-y:scroll}.tooltiplery,.tooltiplery *{scrollbar-width:none}.tooltiplery ::-webkit-scrollbar,.tooltiplery::-webkit-scrollbar{display:none}.tooltiplery{background-color:#fff;color:#000;box-shadow:0 8px 32px #80808080}@media (prefers-color-scheme:dark){.tooltiplery{background-color:#202020;color:#e0e0e0;box-shadow:0 8px 32px #00000040}}";
+        document.getElementsByTagName("body")[0].appendChild(temp);
+    },
+    /**
      * tooltiplery tooltip **actions**, use this to **show** and **hide** tooltips.
      */
     action: {
