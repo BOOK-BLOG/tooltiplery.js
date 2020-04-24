@@ -33,7 +33,15 @@ var body = document.getElementsByTagName("body")[0];
 body.appendChild(demo);
 ```
 
-### Third Step - Create a `element.tooltip`
+### Third Step - Initialize tooltiplery.js
+
+```javascript
+window.onload = function () { // when the window is loaded,
+  tooltiplery.init(); // then initialize tooltiplery.js
+};
+```
+
+### Fourth Step - Create a `element.tooltip`
 
 ```javascript
 var myTooltip = tooltiplery.element.tooltip({
@@ -66,7 +74,7 @@ var myTooltip = tooltiplery.element.tooltip({
 });
 ```
 
-### Fourth Step - Create a `controller.tooltipController`
+### Fifth Step - Create a `controller.tooltipController`
 
 ```javascript
 tooltiplery.controller.tooltipController({
@@ -78,7 +86,7 @@ tooltiplery.controller.tooltipController({
 })
 ```
 
-### Fifth Step - Done
+### Sixth Step - Done
 
 Now open your HTML file with your browser, and hover on the button, the tooltip will popup under the button.
 
@@ -86,7 +94,7 @@ Now open your HTML file with your browser, and hover on the button, the tooltip 
 
 If your code editor supports displaying JSDoc, you wiil see JSDoc in real time, or you can browse the source code.
 
-Also, the code editors supports JSDoc: 
+Also, the code editors supports JSDoc:
 - JetBrains WebStorm
 - Microsoft Visual Studio Code
 - Sublime Text (with extension)
