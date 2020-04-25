@@ -43,4 +43,6 @@ tooltiplery.controller.tooltipController({
             })
         }),
     }),
+    // appear: "fadeIn",
+    disappear: "fadeOut",
 })

@@ -39,6 +39,15 @@ var tooltiplery = {
             idTemp++;
             params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
             bodyTemp.appendChild(params.tooltip);
+            // switch (params.animation.name) {
+                // case "fadeIn":
+                    // params.tooltip.style.transition = "all " + String(params.animation.time / 1000) + "s";
+                    // params.tooltip.style.opacity = "1";
+                    // break;
+                // default:
+                    // console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
+                    // break;
+            // }
             return ("tooltiplery" + String(idTemp));
         },
         /**
@@ -59,7 +68,7 @@ var tooltiplery = {
          */
         hideTooltip: function (params) {
             var temp;
-            var delay;
+            var delay = 0;
             switch (params.type) {
                 case "id":
                     temp = document.getElementById(params.id);
@@ -76,12 +85,14 @@ var tooltiplery = {
                     temp.style.opacity = "0";
                     delay = 250;
                     break;
-
                 default:
+                    console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
                     break;
             }
             setTimeout(function () {
                 temp.parentNode.removeChild(temp);
+                temp.style.transition = "";
+                temp.style.opacity = "1";
             }, delay)
         },
     },
@@ -110,6 +121,7 @@ var tooltiplery = {
                     params.element.onmouseover = function () {
                         temp = tooltiplery.action.showTooltip({
                             tooltip: params.tooltip,
+                            animation: params.appear,
                         });
                     };
                     params.element.onmouseleave = function () {
@@ -117,7 +129,7 @@ var tooltiplery = {
                             tooltiplery.action.hideTooltip({
                                 type: "HTMLElement",
                                 element: params.tooltip,
-                                animation: "fadeOut",
+                                animation: params.disappear,
                             })
                         }
                     };
