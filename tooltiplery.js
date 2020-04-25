@@ -58,17 +58,31 @@ var tooltiplery = {
          * @returns {undefined} no returns.
          */
         hideTooltip: function (params) {
+            var temp;
+            var delay;
             switch (params.type) {
                 case "id":
-                    var temp = document.getElementById(params.id);
-                    temp.parentNode.removeChild(temp);
+                    temp = document.getElementById(params.id);
                     break;
                 case "HTMLElement":
-                    params.element.parentNode.removeChild(params.element);
+                    temp = params.element;
                     break;
                 default:
                     break;
             }
+            switch (params.animation) {
+                case "fadeOut":
+                    temp.style.transition = "all 0.25s";
+                    temp.style.opacity = "0";
+                    delay = 250;
+                    break;
+
+                default:
+                    break;
+            }
+            setTimeout(function () {
+                temp.parentNode.removeChild(temp);
+            }, delay)
         },
     },
     /**
@@ -87,23 +101,31 @@ var tooltiplery = {
          * @param {String} params.type the way you call the tooltip out.
          * @param {HTMLElement} params.element bind the event to this element.
          * @param {HTMLElement} params.tooltip the tooltip to show.
-         * @returns {undefined} no returns.
+         * @returns {String} the tooltip element's id attribute.
          */
         tooltipController: function (params) {
+            var temp;
             switch (params.type) {
                 case "hover":
                     params.element.onmouseover = function () {
-                        tooltiplery.action.showTooltip({
+                        temp = tooltiplery.action.showTooltip({
                             tooltip: params.tooltip,
                         });
                     };
                     params.element.onmouseleave = function () {
-                        params.tooltip.onmouseleave = function () { params.tooltip.parentNode.removeChild(params.tooltip) }
+                        params.tooltip.onmouseleave = function () {
+                            tooltiplery.action.hideTooltip({
+                                type: "HTMLElement",
+                                element: params.tooltip,
+                                animation: "fadeOut",
+                            })
+                        }
                     };
                     break;
                 default:
                     break;
-            }
+            };
+            return temp;
         },
     },
     /**
@@ -286,6 +308,6 @@ var tooltiplery = {
             temp.innerHTML = marked(params.markdown);
             if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
             return temp;
-        }
+        },
     },
 };
