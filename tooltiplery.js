@@ -40,13 +40,13 @@ var tooltiplery = {
             params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
             bodyTemp.appendChild(params.tooltip);
             // switch (params.animation.name) {
-                // case "fadeIn":
-                    // params.tooltip.style.transition = "all " + String(params.animation.time / 1000) + "s";
-                    // params.tooltip.style.opacity = "1";
-                    // break;
-                // default:
-                    // console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
-                    // break;
+            // case "fadeIn":
+            // params.tooltip.style.transition = "all " + String(params.animation.time / 1000) + "s";
+            // params.tooltip.style.opacity = "1";
+            // break;
+            // default:
+            // console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
+            // break;
             // }
             return ("tooltiplery" + String(idTemp));
         },
@@ -323,3 +323,5 @@ var tooltiplery = {
         },
     },
 };
+
+module.exports = tooltiplery;

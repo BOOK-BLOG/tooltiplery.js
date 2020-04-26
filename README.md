@@ -17,6 +17,18 @@ Add these lines to your HTML file
 <script src="tooltiplery.js"></script>
 ```
 
+or, if you use npm:
+
+```bash
+npm i tooltiplery.js
+```
+
+then include it:
+
+```js
+const tooltiplery = require('tooltiplery.js')
+```
+
 ### Second Step - Create a Button
 
 ```html
