@@ -1,0 +1,25 @@
+{
+  "name": "tooltiplery.js",
+  "version": "0.0.1",
+  "description": "Simply create your tooltip quickly.",
+  "main": "tooltiplery.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Read the document: https://github.com/BOOK-BLOG/tooltiplery.js/blob/master/README.md, to know how to use tooltiplery.js\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOOK-BLOG/tooltiplery.js.git"
+  },
+  "keywords": [
+    "tooltip"
+  ],
+  "author": "BOOK-BLOG STUDIO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BOOK-BLOG/tooltiplery.js/issues"
+  },
+  "homepage": "https://github.com/BOOK-BLOG/tooltiplery.js#readme"
+}
