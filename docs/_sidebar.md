@@ -1,0 +1,10 @@
+- **Get Started**
+  - [Welcome](/)
+  - [Create your First Tooltip](/get-started.md)
+- **[Documentation](/main)**
+  - [Actions](/action)
+  - [Controllers](/controller)
+  - [Elements](/element)
+    - [Paragraph](/element/p)
+    - [Headings](/element/h)
+    - [Markdown](/element/md)
