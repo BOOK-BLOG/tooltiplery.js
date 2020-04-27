@@ -38,16 +38,19 @@ var tooltiplery = {
             };
             idTemp++;
             params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
-            bodyTemp.appendChild(params.tooltip);
-            // switch (params.animation.name) {
-            // case "fadeIn":
-            // params.tooltip.style.transition = "all " + String(params.animation.time / 1000) + "s";
-            // params.tooltip.style.opacity = "1";
-            // break;
-            // default:
-            // console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
-            // break;
-            // }
+            // bodyTemp.appendChild(params.tooltip);
+            var appendTemp = bodyTemp.appendChild(params.tooltip);
+            appendTemp.onload = appendTemp.onreadystatechange = function () {
+                switch (params.animation) {
+                    case "fadeIn":
+                        params.tooltip.style.transition = "all 0.25s";
+                        params.tooltip.style.opacity = "1";
+                        break;
+                    default:
+                        console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
+                        break;
+                }
+            }
             return ("tooltiplery" + String(idTemp));
         },
         /**
@@ -91,8 +94,8 @@ var tooltiplery = {
             }
             setTimeout(function () {
                 temp.parentNode.removeChild(temp);
-                temp.style.transition = "";
-                temp.style.opacity = "1";
+                // temp.style.transition = "";
+                // temp.style.opacity = "0";
             }, delay)
         },
     },
