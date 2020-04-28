@@ -150,7 +150,7 @@ var tooltiplery = {
         /**
          * ```javascript
          * tooltiplery.element.tooltip({
-         *     child: imageCapView({...}), // tooltiplery tooltip elements or any HTML element.
+         *     child: imageCapView({...}), // tooltiplery elements or any HTML element.
          *     position: "fixed", // A string, CSS position property.
          *     left: (String($(this).offset().left + $(this).width()) + "px"), // A string, CSS left property.
          *     top: (String($(this).offset().top + $(this).height()) + "px"), // A string, CSS top property.
@@ -179,11 +179,13 @@ var tooltiplery = {
          * tooltiplery.element.imageCapView({
          *     header: [HTMLElement],
          *     content: [HTMLElement],
+         *     footer: [HTMLElement],
          * })
          * ```
          * tooltiplery **imageCapView** builder.
          * @param {HTMLElement} params.header image cap element.
          * @param {HTMLElement} params.content content element.
+         * @param {HTMLElement} params.footer footer element.
          * @returns {HTMLDivElement} tooltiplery **imageCapView** element.
          */
         imageCapView: function (params) {

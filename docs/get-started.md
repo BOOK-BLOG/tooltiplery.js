@@ -59,7 +59,7 @@ var myTooltip = tooltiplery.element.tooltip({
     header: tooltiplery.element.img({
       // imageCapView() 's header element - img()
       url:
-        "https://www.bing.com/th?id=OHR.BluebellWood_ZH-CN8128422960_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn", // where is the image - url
+        "path-to-my-photo.jpg", // where is the image - url
       fit: "cover", // CSS object-fit property - https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
       height: "256px", // the height of the image
     }),

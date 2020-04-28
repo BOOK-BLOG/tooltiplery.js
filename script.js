@@ -7,7 +7,7 @@ tooltiplery.controller.tooltipController({
         left: (String($(".demo").offset().left + $(".demo").width()) + "px"),
         child: tooltiplery.element.imageCapView({
             header: tooltiplery.element.img({
-                url: "https://www.bing.com/th?id=OHR.BluebellWood_ZH-CN8128422960_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn",
+                url: "demo.png",
                 fit: "cover",
                 height: "256px",
             }),
@@ -34,7 +34,7 @@ tooltiplery.controller.tooltipController({
         left: (String($(".demo2").offset().left + $(".demo2").width()) + "px"),
         child: tooltiplery.element.imageCapView({
             header: tooltiplery.element.img({
-                url: "https://www.bing.com/th?id=OHR.BluebellWood_ZH-CN8128422960_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn",
+                url: "demo.png",
                 fit: "cover",
                 height: "256px",
             }),
