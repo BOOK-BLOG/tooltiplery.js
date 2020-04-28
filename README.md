@@ -1,4 +1,4 @@
-# Tooltipibility
+# tooltiplery.js
 
 Simply create your tooltip quickly.
 
