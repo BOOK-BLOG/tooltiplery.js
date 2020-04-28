@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>tooltiplery.js - Simply create your tooltip quickly.</title>
+  <link rel="icon" href="logo.png" type="image/x-icon" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Simply create your tooltip quickly.">
   <meta name="viewport"
@@ -19,6 +20,11 @@
       repo: 'https://github.com/BOOK-BLOG/tooltiplery.js',
       coverpage: true,
       loadSidebar: true,
+    }
+  </script>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('/sw.js')
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
