@@ -71,7 +71,7 @@ var myTooltip = tooltiplery.element.tooltip({
       // imageCapView() 's header element - paragraphBlock()
       children: [
         // put muiltiple paragraph elements in the array
-        tooltiplery.element.textHeader[1]({
+        tooltiplery.element.textHeading[1]({
           // the title element, the same as <h1> element.
           text: "Demo Text",
         }),

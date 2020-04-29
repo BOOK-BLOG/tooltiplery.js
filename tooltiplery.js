@@ -199,7 +199,7 @@ var tooltiplery = {
         /**
          * ```javascript
          * tooltiplery.element.img({
-         *     url: [imageUrl],
+         *     url: [imageUrl], // A string, the URL of the image.
          *     fit: "cover", // A string, CSS object-fit property.
          *     width: "75%", // A string, default is "100%", CSS width property.
          *     height: "128px", // A string, CSS height property
@@ -229,14 +229,14 @@ var tooltiplery = {
          *     children: [
          *         [HTMLElement],
          *         // or: 
-         *         tooltiplery.element.textHeader[1]({
+         *         tooltiplery.element.textHeading[1]({
          *             text: "Heading 1",
          *         }),
          *         tooltiplery.element.paragraph({
          *             text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
          *         }),
          *         ...
-         *     ], // Muitiple children by an array.
+         *     ], // Muitiple children in an array.
          *     padding: "16px", // A string, CSS padding property.
          * })
          * ```
@@ -255,14 +255,14 @@ var tooltiplery = {
         },
         /**
          * ```javascript
-         * tooltiplery.element.textHeader[headingLevel]({ // headingLevel is a number, the level of heading.
+         * tooltiplery.element.textHeading[headingLevel]({ // headingLevel is a number, the level of heading.
          *     text: "Lorem ipsum", // A string, the heading text.
          * })
          * ```
          * @param {String} params.text the inner text in the heading element.
          * @returns {HTMLHeadingElement} HTML **heading** element.
          */
-        textHeader: [
+        textHeading: [
             undefined,
             function (params) {
                 var temp = document.createElement("h1");

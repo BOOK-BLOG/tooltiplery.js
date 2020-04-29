@@ -16,6 +16,6 @@ tooltiplery.js is a powerful JavaScript package for you to create your tooltip q
     - [imageCapView](/main/element/imageCapView)
     - [img](/main/element/img)
     - [paragraphBlock](/main/element/paragraphBlock)
-    - [textHeader](/main/element/textHeader)
+    - [textHeading](/main/element/textHeading)
     - [paragraph](/main/element/paragraph)
     - [markdownBlock](/main/element/markdownBlock)

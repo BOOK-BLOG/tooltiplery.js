@@ -13,7 +13,7 @@ tooltiplery.controller.tooltipController({
             }),
             content: tooltiplery.element.paragraphBlock({
                 children: [
-                    tooltiplery.element.textHeader[1]({
+                    tooltiplery.element.textHeading[1]({
                         text: "Demo Text",
                     }),
                     tooltiplery.element.paragraph({
