@@ -10,6 +10,8 @@ tooltiplery.element.textHeading[headingLevel]({ // headingLevel is a number, the
 })
 ```
 
+`textHeading[1]` is h1 element, `textHeading[2]` is h2 element...
+
 ## Returns
 
 This function returns an HTML heading element.

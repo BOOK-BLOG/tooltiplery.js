@@ -4,7 +4,10 @@
   - [Create your First Tooltip](/get-started.md)
 - **[Documentation](/main)**
   - [Actions](/main/action)
+    - [showTooltip](/main/action/showTooltip)
+    - [hideTooltip](/main/action/hideTooltip)
   - [Controllers](/main/controller)
+    - [tooltipController](/main/controller/tooltipController)
   - [Elements](/main/element)
     - [tooltip](/main/element/tooltip)
     - [imageCapView](/main/element/imageCapView)

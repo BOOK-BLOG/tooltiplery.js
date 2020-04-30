@@ -12,3 +12,4 @@ Elements is a huge part of tooltiplery components. Tooltips are made of the them
   - [`textHeading`](/main/element/textHeading)
   - [`paragraph`](/main/element/paragraph)
   - [`markdownBlock`](/main/element/markdownBlock)
+  
