@@ -39,18 +39,19 @@ var tooltiplery = {
             idTemp++;
             params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
             // bodyTemp.appendChild(params.tooltip);
-            var appendTemp = bodyTemp.appendChild(params.tooltip);
-            appendTemp.onload = appendTemp.onreadystatechange = function () {
-                switch (params.animation) {
-                    case "fadeIn":
-                        params.tooltip.style.transition = "all 0.25s";
-                        params.tooltip.style.opacity = "1";
-                        break;
-                    default:
-                        console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
-                        break;
-                }
-            }
+            bodyTemp.appendChild(params.tooltip);
+            // var appendTemp = bodyTemp.appendChild(params.tooltip);
+            // appendTemp.onload = appendTemp.onreadystatechange = function () {
+            //     switch (params.animation) {
+            //         case "fadeIn":
+            //             params.tooltip.style.transition = "all 0.25s";
+            //             params.tooltip.style.opacity = "1";
+            //             break;
+            //         default:
+            //             console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
+            //             break;
+            //     }
+            // }
             return ("tooltiplery" + String(idTemp));
         },
         /**
@@ -82,16 +83,18 @@ var tooltiplery = {
                 default:
                     break;
             }
-            switch (params.animation) {
-                case "fadeOut":
-                    temp.style.transition = "all 0.25s";
-                    temp.style.opacity = "0";
-                    delay = 250;
-                    break;
-                default:
-                    console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
-                    break;
-            }
+            // switch (params.animation) {
+            //     case "fadeOut":
+            //         temp.style.transition = "all 0.25s";
+            //         temp.style.opacity = "0";
+            //         delay = 250;
+            //         break;
+            //     default:
+            //         if (params.animation) {
+            //             console.error("Uncaught ReferenceError: " + params.animation + " is not a supported animation.")
+            //         }
+            //         break;
+            // }
             setTimeout(function () {
                 temp.parentNode.removeChild(temp);
                 // temp.style.transition = "";
