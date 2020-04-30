@@ -7,3 +7,5 @@
 [GitHub](https://github.com/BOOK-BLOG/tooltiplery.js)
 [npm](https://www.npmjs.com/package/tooltiplery.js)
 [Get Started](/README)
+
+![color](#ffffff)
