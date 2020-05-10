@@ -49,7 +49,7 @@ body.appendChild(demo);
 
 ```javascript
 window.onload = function () { // when the window is loaded,
-  tooltiplery.init(); // then initialize tooltiplery.js
+  tooltiplery.init.createStyleSheet(); // Create a style element that contains main style of tooltiplery.
 };
 ```
 

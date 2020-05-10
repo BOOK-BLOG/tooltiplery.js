@@ -8,10 +8,19 @@ var tooltiplery = {
      * ```
      * Initialize tooltiplery.js
      */
-    init: function () {
-        var temp = document.createElement("style");
-        temp.innerHTML = ".tooltiplery{border-radius:8px;overflow-y:scroll}.tooltiplery,.tooltiplery *{scrollbar-width:none}.tooltiplery ::-webkit-scrollbar,.tooltiplery::-webkit-scrollbar{display:none}.tooltiplery{background-color:#fff;color:#000;box-shadow:0 8px 32px #80808080}@media (prefers-color-scheme:dark){.tooltiplery{background-color:#202020;color:#e0e0e0;box-shadow:0 8px 32px #00000040}}";
-        document.getElementsByTagName("body")[0].appendChild(temp);
+    init: {
+        /**
+         * ```javascript
+         * tooltiplery.init.createStyleSheet()
+         * ```
+         * Create a style element that contains main style of tooltiplery.
+         * @returns {String} tooltiplery tooltip **element id**.
+         */
+        createStyleSheet: function () {
+            var temp = document.createElement("style");
+            temp.innerHTML = ".tooltiplery{border-radius:8px;overflow-y:scroll}.tooltiplery,.tooltiplery *{scrollbar-width:none}.tooltiplery ::-webkit-scrollbar,.tooltiplery::-webkit-scrollbar{display:none}.tooltiplery{background-color:#fff;color:#000;box-shadow:0 8px 32px #80808080}@media (prefers-color-scheme:dark){.tooltiplery{background-color:#202020;color:#e0e0e0;box-shadow:0 8px 32px #00000040}}";
+            document.getElementsByTagName("body")[0].appendChild(temp);
+        },
     },
     /**
      * tooltiplery tooltip **actions**, use this to **show** and **hide** tooltips.
@@ -27,9 +36,7 @@ var tooltiplery = {
          * @param {HTMLDivElement} params.tooltip a **HTML div element** created by `tooltiplery.element.tooltip` or **your own HTML element**.
          * @returns {String} tooltiplery tooltip **element id**.
          */
-        showTooltip: function (params = {
-            tooltip: new HTMLElement(),
-        }) {
+        showTooltip: function (params) {
             var bodyTemp = document.getElementsByTagName("body")[0];
             var temp = document.getElementsByClassName("tooltiplery");
             var idTemp = 0;
@@ -48,7 +55,7 @@ var tooltiplery = {
          * tooltiplery.action.hideTooltip({
          *     type: "id",
          *     id: "tooltiplery1",
-         *     // or: 
+         *     // or:
          *     type: "HTMLElement",
          *     element: myTooltip,
          * })
@@ -59,11 +66,7 @@ var tooltiplery = {
          * @param {HTMLElement} params.element if type is "HTMLElement", give the HTML element.
          * @returns {undefined} no returns.
          */
-        hideTooltip: function (params = {
-            type: new String(),
-            id: new String(),
-            elemant: new HTMLElement(),
-        }) {
+        hideTooltip: function (params) {
             var temp;
             var delay = 0;
             switch (params.type) {
@@ -89,7 +92,7 @@ var tooltiplery = {
          * ```javascript
          * tooltiplery.controller.tooltipController({
          *     type: "hover", // A string, the way you call the tooltip out.
-         *     element: document.getElementById("myButton"), // HTML elemant, the tooltip will popup when you hover on or click this element.
+         *     element: document.getElementById("myButton"), // HTML element, the tooltip will popup when you hover on or click this element.
          *     tooltip: tooltiplery.element.tooltip({...}), // tooltiplery tooltip or your own HTML element.
          * })
          * ```
@@ -99,10 +102,7 @@ var tooltiplery = {
          * @param {HTMLElement} params.tooltip the tooltip to show.
          * @returns {String} the tooltip element's id attribute.
          */
-        tooltipController: function (params = {
-            type: new String(),
-            tooltip: new HTMLElement(),
-        }) {
+        tooltipController: function (params) {
             var temp;
             switch (params.type) {
                 case "hover":
@@ -148,14 +148,7 @@ var tooltiplery = {
          * @param {String} params.top tooltip element's top property.
          * @returns {HTMLDivElement} tooltiplery **tooltip element**.
          */
-        tooltip: function (params = {
-            child: new HTMLElement(),
-            width: new String(),
-            height: new String(),
-            position: new String(),
-            top: new String(),
-            left: new String(),
-        }) {
+        tooltip: function (params) {
             var temp = document.createElement("div");
             if (params.width) { temp.style.width = params.width; } else { temp.style.width = "350px"; }
             if (params.height) { temp.style.height = params.height; } else { temp.style.height = "500px"; }
@@ -180,11 +173,7 @@ var tooltiplery = {
          * @param {HTMLElement} params.footer footer element.
          * @returns {HTMLDivElement} tooltiplery **imageCapView** element.
          */
-        imageCapView: function (params = {
-            header: new HTMLElement(),
-            content: new HTMLElement(),
-            footer: new HTMLElement(),
-        }) {
+        imageCapView: function (params) {
             var temp = document.createElement("div");
             temp.style.width = "100%";
             if (params.header) { temp.appendChild(params.header) };
@@ -210,13 +199,7 @@ var tooltiplery = {
          * @param {String} params.borderRadius img elements's border-radius property.
          * @returns {HTMLImageElement} HTML **img** element
          */
-        img: function (params = {
-            url: new String(),
-            fit: new String(),
-            width: new String(),
-            height: new String(),
-            borderRadius: new String(),
-        }) {
+        img: function (params) {
             var temp = document.createElement("img");
             temp.setAttribute("src", params.url);
             if (params.fit) { temp.style.objectFit = params.fit };
@@ -230,7 +213,7 @@ var tooltiplery = {
          * tooltiplery.element.paragraphBlock({
          *     children: [
          *         [HTMLElement],
-         *         // or: 
+         *         // or:
          *         tooltiplery.element.textHeading[1]({
          *             text: "Heading 1",
          *         }),
@@ -247,10 +230,7 @@ var tooltiplery = {
          * @param {String} params.padding tooltiplery paragraphBlock element's padding property.
          * @returns {HTMLDivElement} tooltiplery **paragraphBlock** element
          */
-        paragraphBlock: function (params = {
-            children: new Array(),
-            padding: new String(),
-        }) {
+        paragraphBlock: function (params) {
             var temp = document.createElement("div");
             for (var i = 0; i < params.children.length; i++) {
                 temp.appendChild(params.children[i]);
@@ -269,32 +249,32 @@ var tooltiplery = {
          */
         textHeading: [
             undefined,
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h1");
                 temp.innerHTML = params.text;
                 return temp;
             },
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h2");
                 temp.innerHTML = params.text;
                 return temp;
             },
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h3");
                 temp.innerHTML = params.text;
                 return temp;
             },
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h4");
                 temp.innerHTML = params.text;
                 return temp;
             },
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h5");
                 temp.innerHTML = params.text;
                 return temp;
             },
-            function (params = { text: new String(), }) {
+            function (params) {
                 var temp = document.createElement("h6");
                 temp.innerHTML = params.text;
                 return temp;
@@ -309,7 +289,7 @@ var tooltiplery = {
          * @param {String} params.text the inner text in the paragraph element.
          * @returns {HTMLParagraphElement} HTML **paragraph** element.
          */
-        paragraph: function (params = { text: new String(), }) {
+        paragraph: function (params) {
             var temp = document.createElement("p");
             temp.innerHTML = params.text;
             return temp;
@@ -325,16 +305,37 @@ var tooltiplery = {
          * @param {String} params.padding tooltiplery paragraphBlock element's padding property.
          * @returns {HTMLDivElement} HTML **div** element.
          */
-        markdownBlock: function (params = {
-            markdown: new String(),
-            padding: new String(),
-        }) {
+        markdownBlock: function (params) {
             var temp = document.createElement("div");
             temp.innerHTML = marked(params.markdown);
             if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
             return temp;
         },
     },
+    animation: {
+        fadeIn: function (params) {
+            if (!params.duration) { params.duration = 500 };
+            var start;
+            var progress;
+            function ani(timeStamp) {
+                if (!start) { start = timeStamp };
+                progress = timeStamp - start;
+                if (progress < params.duration) {
+                    console.log(progress / params.duration);
+                    params.element.style.opacity = progress / params.duration;
+                    window.requestAnimationFrame(ani);
+                } else {
+                    window.cancelAnimationFrame(ani);
+                    params.element.style.opacity = "1";
+                }
+                // params.element.style.opacity;
+                // element.style.height = (currentHeight * 2) + 'px';
+            }
+            window.requestAnimationFrame(ani);
+        },
+    },
 };
 
 module.exports = tooltiplery;
+
+// TODO: NEW ANIMATION FEATURE based on **window.requestAnimationFrame()**
