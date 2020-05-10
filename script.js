@@ -1,3 +1,5 @@
+// const tooltiplery = require("./tooltiplery")
+
 tooltiplery.controller.tooltipController({
     type: "hover",
     element: $(".demo")[0],
@@ -43,4 +45,14 @@ tooltiplery.controller.tooltipController({
             })
         }),
     }),
+    animation: {
+        appear: {
+            animation: tooltiplery.animation.fadeIn,
+            duration: 250,
+        },
+        disappear: {
+            animation: tooltiplery.animation.fadeOut,
+            duration: 100,
+        },
+    },
 })

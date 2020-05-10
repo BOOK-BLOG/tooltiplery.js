@@ -19,7 +19,7 @@ var tooltiplery = {
         createStyleSheet: function () {
             var temp = document.createElement("style");
             temp.innerHTML = ".tooltiplery{border-radius:8px;overflow-y:scroll}.tooltiplery,.tooltiplery *{scrollbar-width:none}.tooltiplery ::-webkit-scrollbar,.tooltiplery::-webkit-scrollbar{display:none}.tooltiplery{background-color:#fff;color:#000;box-shadow:0 8px 32px #80808080}@media (prefers-color-scheme:dark){.tooltiplery{background-color:#202020;color:#e0e0e0;box-shadow:0 8px 32px #00000040}}";
-            document.getElementsByTagName("body")[0].appendChild(temp);
+            document.body.appendChild(temp);
         },
     },
     /**
@@ -37,7 +37,9 @@ var tooltiplery = {
          * @returns {String} tooltiplery tooltip **element id**.
          */
         showTooltip: function (params) {
-            var bodyTemp = document.getElementsByTagName("body")[0];
+            var bodyTemp = document.body;
+
+            // set the id for the new tooltip
             var temp = document.getElementsByClassName("tooltiplery");
             var idTemp = 0;
             for (let i = 0; i < temp.length; i++) {
@@ -46,9 +48,20 @@ var tooltiplery = {
                 }
             };
             idTemp++;
+
             params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
             bodyTemp.appendChild(params.tooltip);
-            return ("tooltiplery" + String(idTemp));
+
+            function callback() {
+                return ("tooltiplery" + String(idTemp));
+            }
+
+            if (params.animation) {
+                params.animation.animation({
+                    duration: params.animation.duration,
+                    element: params.animation.element,
+                }, callback)
+            } else { callback() };
         },
         /**
          * ```javascript
@@ -68,7 +81,6 @@ var tooltiplery = {
          */
         hideTooltip: function (params) {
             var temp;
-            var delay = 0;
             switch (params.type) {
                 case "id":
                     temp = document.getElementById(params.id);
@@ -79,9 +91,17 @@ var tooltiplery = {
                 default:
                     break;
             }
-            setTimeout(function () {
+
+            function callback() {
                 temp.parentNode.removeChild(temp);
-            }, delay)
+            }
+
+            if (params.animation) {
+                params.animation.animation({
+                    duration: params.animation.duration,
+                    element: params.animation.element,
+                }, callback)
+            } else { callback() };
         },
     },
     /**
@@ -109,7 +129,11 @@ var tooltiplery = {
                     params.element.onmouseover = function () {
                         temp = tooltiplery.action.showTooltip({
                             tooltip: params.tooltip,
-                            animation: params.appear,
+                            animation: {
+                                animation: params.animation.appear.animation,
+                                duration: params.animation.appear.duration,
+                                element: params.tooltip,
+                            },
                         });
                     };
                     params.element.onmouseleave = function () {
@@ -117,7 +141,11 @@ var tooltiplery = {
                             tooltiplery.action.hideTooltip({
                                 type: "HTMLElement",
                                 element: params.tooltip,
-                                animation: params.disappear,
+                                animation: {
+                                    animation: params.animation.disappear.animation,
+                                    duration: params.animation.disappear.duration,
+                                    element: params.tooltip,
+                                },
                             })
                         }
                     };
@@ -313,7 +341,7 @@ var tooltiplery = {
         },
     },
     animation: {
-        fadeIn: function (params) {
+        fadeIn: function (params, callback) {
             if (!params.duration) { params.duration = 500 };
             var start;
             var progress;
@@ -321,15 +349,35 @@ var tooltiplery = {
                 if (!start) { start = timeStamp };
                 progress = timeStamp - start;
                 if (progress < params.duration) {
-                    console.log(progress / params.duration);
                     params.element.style.opacity = progress / params.duration;
                     window.requestAnimationFrame(ani);
                 } else {
                     window.cancelAnimationFrame(ani);
-                    params.element.style.opacity = "1";
+                    params.element.style.opacity = "";
+                    if (callback) {
+                        callback();
+                    }
                 }
-                // params.element.style.opacity;
-                // element.style.height = (currentHeight * 2) + 'px';
+            }
+            window.requestAnimationFrame(ani);
+        },
+        fadeOut: function (params, callback) {
+            if (!params.duration) { params.duration = 500 };
+            var start;
+            var progress;
+            function ani(timeStamp) {
+                if (!start) { start = timeStamp };
+                progress = timeStamp - start;
+                if (progress < params.duration) {
+                    params.element.style.opacity = 1 - progress / params.duration;
+                    window.requestAnimationFrame(ani);
+                } else {
+                    window.cancelAnimationFrame(ani);
+                    params.element.style.opacity = "";
+                    if (callback) {
+                        callback();
+                    }
+                }
             }
             window.requestAnimationFrame(ani);
         },
@@ -337,5 +385,3 @@ var tooltiplery = {
 };
 
 module.exports = tooltiplery;
-
-// TODO: NEW ANIMATION FEATURE based on **window.requestAnimationFrame()**
