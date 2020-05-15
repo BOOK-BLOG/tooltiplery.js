@@ -8,15 +8,15 @@ var tooltiplery = {
      * ```
      * Initialize tooltiplery.js
      */
-    init: {
+    initialization: {
         /**
          * ```javascript
-         * tooltiplery.init.createStyleSheet()
+         * tooltiplery.init.appendStyleSheet()
          * ```
-         * Create a style element that contains main style of tooltiplery.
+         * Append a style element that contains main style of tooltiplery.
          * @returns {String} tooltiplery tooltip **element id**.
          */
-        createStyleSheet: function () {
+        appendStyleSheet: function () {
             var temp = document.createElement("style");
             temp.innerHTML = ".tooltiplery{border-radius:8px;overflow-y:scroll}.tooltiplery,.tooltiplery *{scrollbar-width:none}.tooltiplery ::-webkit-scrollbar,.tooltiplery::-webkit-scrollbar{display:none}.tooltiplery{background-color:#fff;color:#000;box-shadow:0 8px 32px #80808080}@media (prefers-color-scheme:dark){.tooltiplery{background-color:#202020;color:#e0e0e0;box-shadow:0 8px 32px #00000040}}";
             document.body.appendChild(temp);
@@ -57,10 +57,7 @@ var tooltiplery = {
             }
 
             if (params.animation) {
-                params.animation.animation({
-                    duration: params.animation.duration,
-                    element: params.animation.element,
-                }, callback)
+                params.animation.animation(params.animation, callback)
             } else { callback() };
         },
         /**
@@ -97,10 +94,7 @@ var tooltiplery = {
             }
 
             if (params.animation) {
-                params.animation.animation({
-                    duration: params.animation.duration,
-                    element: params.animation.element,
-                }, callback)
+                params.animation.animation(params.animation, callback)
             } else { callback() };
         },
     },
@@ -124,14 +118,15 @@ var tooltiplery = {
          */
         tooltipController: function (params) {
             var temp;
+            var aniTemp = params.animation;
             switch (params.type) {
                 case "hover":
                     params.element.onmouseover = function () {
                         temp = tooltiplery.action.showTooltip({
                             tooltip: params.tooltip,
                             animation: {
-                                animation: params.animation.appear.animation,
-                                duration: params.animation.appear.duration,
+                                animation: aniTemp.appear.animation,
+                                duration: aniTemp.appear.duration,
                                 element: params.tooltip,
                             },
                         });
@@ -142,8 +137,8 @@ var tooltiplery = {
                                 type: "HTMLElement",
                                 element: params.tooltip,
                                 animation: {
-                                    animation: params.animation.disappear.animation,
-                                    duration: params.animation.disappear.duration,
+                                    animation: aniTemp.disappear.animation,
+                                    duration: aniTemp.disappear.duration,
                                     element: params.tooltip,
                                 },
                             })
@@ -340,7 +335,25 @@ var tooltiplery = {
             return temp;
         },
     },
+    /**
+     * tooltiplery animations.
+     */
     animation: {
+        /**
+         * ```javascript
+         * tooltiplery.animation.fadeIn({
+         *     element: [HTMLElement], // The target element of this animation.
+         *     duration: 250, // The duration of the animation, the unit is milliseconds.
+         * }, function () { // The callback function, run after finishing the animation.
+         *     console.log("the animation is finished");
+         * })
+         * ```
+         * tooltiplery **fadeIn** animation
+         * @param {Array} params.element the target element of this animation.
+         * @param {String} params.duration the duration of the animation, the unit is milliseconds.
+         * @param {String} callback the callback function, run after finishing the animation.
+         * @returns {undefined} no returns.
+         */
         fadeIn: function (params, callback) {
             if (!params.duration) { params.duration = 500 };
             var start;
@@ -361,6 +374,21 @@ var tooltiplery = {
             }
             window.requestAnimationFrame(ani);
         },
+        /**
+         * ```javascript
+         * tooltiplery.animation.fadeOut({
+         *     element: [HTMLElement], // The target element of this animation.
+         *     duration: 250, // The duration of the animation, the unit is milliseconds.
+         * }, function () { // The callback function, run after finishing the animation.
+         *     console.log("the animation is finished");
+         * })
+         * ```
+         * tooltiplery **fadeOut** animation
+         * @param {Array} params.element the target element of this animation.
+         * @param {String} params.duration the duration of the animation, the unit is milliseconds.
+         * @param {String} callback the callback function, run after finishing the animation.
+         * @returns {undefined} no returns.
+         */
         fadeOut: function (params, callback) {
             if (!params.duration) { params.duration = 500 };
             var start;
