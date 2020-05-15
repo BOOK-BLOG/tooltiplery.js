@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Read the document: https://github.com/BOOK-BLOG/tooltiplery.js/blob/master/README.md, to know how to use tooltiplery.js\" && exit 1"
+    "test": "echo \"Read the document: https://github.com/BOOK-BLOG/tooltiplery.js/blob/master/README.md, to know how to use tooltiplery.js\" && exit 0"
   },
   "repository": {
     "type": "git",
