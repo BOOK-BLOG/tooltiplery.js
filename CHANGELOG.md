@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.4] - 2020-05-15
+## [0.0.3] - 2020-05-15 Evening
 
 ### **Added**
 
@@ -22,8 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - moved `init()` to `initialization.appendStyleSheet()`
 
-## [0.0.3]
+## [0.0.2] - 2020-04-26 Evening
 
-## [0.0.2]
+[tooltiplery.js Version 0.0.2 on npmjs.com](https://www.npmjs.com/package/tooltiplery.js/v/0.0.2)
 
-## [0.0.1]
+## [0.0.1] - 2020-04-26 Afternoon
+
+[tooltiplery.js Version 0.0.1 on npmjs.com](https://www.npmjs.com/package/tooltiplery.js/v/0.0.1)
