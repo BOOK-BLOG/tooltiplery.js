@@ -42,14 +42,14 @@ var tooltiplery = {
             // set the id for the new tooltip
             var temp = document.getElementsByClassName("tooltiplery");
             var idTemp = 0;
-            for (let i = 0; i < temp.length; i++) {
+            for (var i = 0; i < temp.length; i++) {
                 if (parseInt(temp[i].getAttribute("id").slice(11)) > idTemp) {
                     idTemp = parseInt(temp[i].getAttribute("id").slice(11));
                 }
-            };
+            }
             idTemp++;
 
-            params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)))
+            params.tooltip.setAttribute("id", ("tooltiplery" + String(idTemp)));
             bodyTemp.appendChild(params.tooltip);
 
             function callback() {
@@ -57,8 +57,8 @@ var tooltiplery = {
             }
 
             if (params.animation) {
-                params.animation.animation(params.animation, callback)
-            } else { callback() };
+                params.animation.animation(params.animation, callback);
+            } else { callback(); }
         },
         /**
          * ```javascript
@@ -94,8 +94,8 @@ var tooltiplery = {
             }
 
             if (params.animation) {
-                params.animation.animation(params.animation, callback)
-            } else { callback() };
+                params.animation.animation(params.animation, callback);
+            } else { callback(); }
         },
     },
     /**
@@ -141,13 +141,13 @@ var tooltiplery = {
                                     duration: aniTemp.disappear.duration,
                                     element: params.tooltip,
                                 },
-                            })
-                        }
+                            });
+                        };
                     };
                     break;
                 default:
                     break;
-            };
+            }
             return temp;
         },
     },
@@ -175,9 +175,9 @@ var tooltiplery = {
             var temp = document.createElement("div");
             if (params.width) { temp.style.width = params.width; } else { temp.style.width = "350px"; }
             if (params.height) { temp.style.height = params.height; } else { temp.style.height = "500px"; }
-            if (params.position) { temp.style.position = params.position };
-            if (params.top) { temp.style.top = params.top };
-            if (params.left) { temp.style.left = params.left };
+            if (params.position) { temp.style.position = params.position; }
+            if (params.top) { temp.style.top = params.top; }
+            if (params.left) { temp.style.left = params.left; }
             temp.appendChild(params.child);
             temp.classList.add("tooltiplery");
             return temp;
@@ -199,9 +199,9 @@ var tooltiplery = {
         imageCapView: function (params) {
             var temp = document.createElement("div");
             temp.style.width = "100%";
-            if (params.header) { temp.appendChild(params.header) };
-            if (params.content) { temp.appendChild(params.content) };
-            if (params.footer) { temp.appendChild(params.footer) };
+            if (params.header) { temp.appendChild(params.header); }
+            if (params.content) { temp.appendChild(params.content); }
+            if (params.footer) { temp.appendChild(params.footer); }
             return temp;
         },
         /**
@@ -225,10 +225,10 @@ var tooltiplery = {
         img: function (params) {
             var temp = document.createElement("img");
             temp.setAttribute("src", params.url);
-            if (params.fit) { temp.style.objectFit = params.fit };
-            if (params.width) { temp.style.width = params.width } else { temp.style.width = "100%" };
-            if (params.height) { temp.style.height = params.height };
-            if (params.borderRadius) { temp.style.borderRadius = params.borderRadius };
+            if (params.fit) { temp.style.objectFit = params.fit; }
+            if (params.width) { temp.style.width = params.width; } else { temp.style.width = "100%"; }
+            if (params.height) { temp.style.height = params.height; }
+            if (params.borderRadius) { temp.style.borderRadius = params.borderRadius; }
             return temp;
         },
         /**
@@ -258,7 +258,7 @@ var tooltiplery = {
             for (var i = 0; i < params.children.length; i++) {
                 temp.appendChild(params.children[i]);
             }
-            if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
+            if (params.padding) { temp.style.padding = params.padding; } else { temp.style.padding = "0 16px"; }
             return temp;
         },
         /**
@@ -331,7 +331,7 @@ var tooltiplery = {
         markdownBlock: function (params) {
             var temp = document.createElement("div");
             temp.innerHTML = marked(params.markdown);
-            if (params.padding) { temp.style.padding = params.padding } else { temp.style.padding = "0 16px" };
+            if (params.padding) { temp.style.padding = params.padding; } else { temp.style.padding = "0 16px"; }
             return temp;
         },
     },
@@ -355,11 +355,11 @@ var tooltiplery = {
          * @returns {undefined} no returns.
          */
         fadeIn: function (params, callback) {
-            if (!params.duration) { params.duration = 500 };
+            if (!params.duration) { params.duration = 500; }
             var start;
             var progress;
             function ani(timeStamp) {
-                if (!start) { start = timeStamp };
+                if (!start) { start = timeStamp; }
                 progress = timeStamp - start;
                 if (progress < params.duration) {
                     params.element.style.opacity = progress / params.duration;
@@ -390,11 +390,11 @@ var tooltiplery = {
          * @returns {undefined} no returns.
          */
         fadeOut: function (params, callback) {
-            if (!params.duration) { params.duration = 500 };
+            if (!params.duration) { params.duration = 500; }
             var start;
             var progress;
             function ani(timeStamp) {
-                if (!start) { start = timeStamp };
+                if (!start) { start = timeStamp; }
                 progress = timeStamp - start;
                 if (progress < params.duration) {
                     params.element.style.opacity = 1 - progress / params.duration;
