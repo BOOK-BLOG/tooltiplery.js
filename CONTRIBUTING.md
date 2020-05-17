@@ -41,7 +41,7 @@ if(!condition)console.log("true!");
 for(var i = 0;i<10;i++)console.log(i);
 ```
 
-##### Good Examples
+##### Good Example
 
 ```javascript
 if (!condition) { // no white spaces between ( )
@@ -66,7 +66,7 @@ for (var i = 0; i < 10; i++) { console.log(i); }
 var obj = { one: 1, two: 2, three: 3, arr: [1, 2, 3] };
 ```
 
-##### Good Examples
+##### Good Example
 
 ```javascript
 var obj = {
@@ -77,8 +77,48 @@ var obj = {
 };
 ```
 
-<br/>
+#### Comments
 
----
+##### Bad Examples
 
-**Still writing...**
+- `console.log("msg"); // LOG A MESSAGE IN CONSOLE`
+- `console.log("msg"); // Log a message in console`
+- `console.log("msg"); // Log A Message in Console`
+
+##### Good Example
+
+- `console.log("msg"); // log a message in console // always lowercase`
+
+#### JSDoc
+
+This is part of our source code
+
+```javascript
+...
+
+/**
+ * ```javascript
+ * tooltiplery.action.showTooltip({
+ *     tooltip: tooltiplery.element.tooltip({...})
+ * })
+ * ```
+ * Popup a tooltiplery tooltip.
+ * @param {HTMLDivElement} params.tooltip a **HTML div element** created by `tooltiplery.element.tooltip` or **your own HTML element**.
+ * @returns {String} tooltiplery tooltip **element id**.
+ */
+showTooltip: function (params) {
+    ...
+},
+
+...
+```
+
+1. Show a demo to introduce all the features of the function.
+2. Show all the available parameters like this:
+   ```javascript
+   /** @param {theTypeofTheParam} theNameOfTheParam the description (lowercase & markdown available) */
+   ```
+3. Show what the function will return:
+   ```javascript
+   /** @returns {theTypeofTheReturn} the description (lowercase & markdown available) */
+   ```
