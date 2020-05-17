@@ -119,16 +119,26 @@ var tooltiplery = {
         tooltipController: function (params) {
             var temp;
             var aniTemp = params.animation;
+            var aniTempAppear;
+            var aniTempDisappear;
+            if (aniTemp) {
+                aniTempAppear = {
+                    animation: aniTemp.appear.animation,
+                    duration: aniTemp.appear.duration,
+                    element: params.tooltip,
+                };
+                aniTempDisappear = {
+                    animation: aniTemp.disappear.animation,
+                    duration: aniTemp.disappear.duration,
+                    element: params.tooltip,
+                };
+            }
             switch (params.type) {
                 case "hover":
                     params.element.onmouseover = function () {
                         temp = tooltiplery.action.showTooltip({
                             tooltip: params.tooltip,
-                            animation: {
-                                animation: aniTemp.appear.animation,
-                                duration: aniTemp.appear.duration,
-                                element: params.tooltip,
-                            },
+                            animation: aniTempAppear,
                         });
                     };
                     params.element.onmouseleave = function () {
@@ -136,11 +146,7 @@ var tooltiplery = {
                             tooltiplery.action.hideTooltip({
                                 type: "HTMLElement",
                                 element: params.tooltip,
-                                animation: {
-                                    animation: aniTemp.disappear.animation,
-                                    duration: aniTemp.disappear.duration,
-                                    element: params.tooltip,
-                                },
+                                animation: aniTempDisappear,
                             });
                         };
                     };
@@ -412,4 +418,6 @@ var tooltiplery = {
     },
 };
 
-module.exports = tooltiplery;
+if (typeof(module) != "undefined") {
+    module.exports = tooltiplery;
+}
