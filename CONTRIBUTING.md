@@ -24,8 +24,6 @@ Submit a new issue like this:
 
 ### JavaScript
 
-[jQuery JavaScript Style Guide](https://contribute.jquery.org/style-guide/js/)
-
 #### Variables and Constants
 
 Name as `myVariablesAndConstants`, not:
@@ -33,3 +31,54 @@ Name as `myVariablesAndConstants`, not:
 - `myVariablesandConstants`
 - `MyVariablesAndConstants`
 - `my_variables_and_constants`
+
+#### Spacing
+
+##### Bad Examples
+
+```javascript
+if(!condition)console.log("true!");
+for(var i = 0;i<10;i++)console.log(i);
+```
+
+##### Good Examples
+
+```javascript
+if (!condition) { // no white spaces between ( )
+    console.log("true!");
+    condition = false;
+    // four spaces as one tab
+} // no whitespace at the end of line or on blank lines
+
+for (var i = 0; i < 10; i++) { console.log(i); }
+// always have braces
+// go on only one line when there's only one statement
+
+// new line at the end of the file
+
+```
+
+#### Objects and Arrays
+
+##### Bad Examples
+
+```javascript
+var obj = { one: 1, two: 2, three: 3, arr: [1, 2, 3] };
+```
+
+##### Good Examples
+
+```javascript
+var obj = {
+    one: 1,
+    two: 2,
+    arr: [ 1, 2 ], // go on only one line and no comma after the last item when there's less than 3 items
+    three: 3, // one comma after the last item
+};
+```
+
+<br/>
+
+---
+
+**Still writing...**
