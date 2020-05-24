@@ -45,7 +45,7 @@ body.appendChild(demo);
 
 ```javascript
 window.onload = function () { // when the window is loaded,
-  tooltiplery.init.createStyleSheet(); // create a style element that contains main style of tooltiplery.
+  tooltiplery.initialization.appendStyleSheet(); // Create a style element that contains main style of tooltiplery.
 };
 ```
 
